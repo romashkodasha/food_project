@@ -1,0 +1,36 @@
+
+.button {
+    padding-left: var(--space-l);
+    padding-right: var(--space-l);
+    padding-top: var(--space-s);
+    padding-bottom: var(--space-s);
+    background: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    font-size:18px;
+    border: none;
+    border-radius: 10px;
+
+}
+
+.button:not(:disabled):hover{
+    background: var(--button-primary-bg-hover);
+    color: var(--button-primary-text-hover);
+}
+
+.button-disabled{
+    background: var(--button-primary-bg-disabled);
+    color: var(--button-primary-text-disabled);
+}
+
+.button:active{
+    background: var(--button-primary-bg-active);
+    color: var(--button-primary-text-active);
+}
+
+.button-loading{
+    display:flex;
+    flex-direction: row;
+    gap: var(--space-xxs);
+    align-items: center;
+
+}

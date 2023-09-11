@@ -1,0 +1,123 @@
+import "./RecipesPage.scss";
+import Text from "../../../components/Text";
+import Input from "../../../components/Input";
+import Button from "../../../components/Button";
+import { useState, useEffect } from "react";
+import MultiDropdown, { Option } from "../../../components/MultiDropdown";
+import Card from "../../../components/Card";
+import axios from "axios";
+import { Pagination } from "../../../components/Pagination";
+import {useNavigate} from 'react-router-dom'
+import Loader from "../../../components/Loader/Loader";
+import { apiKey } from "./../../../../apiKey";
+
+const OPTIONS: Option[] = [
+  { key: "kt1", value: "Kategoria1" },
+  { key: "kt2", value: "Kategoria2" },
+  { key: "kt3", value: "Kategoria3" },
+];
+
+export type Recipe = {
+  id: number;
+  image: string;
+  title: string;
+  readyInMinutes: number;
+  ingredients: string;
+  kcal: number;
+};
+
+const RecipesPage = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [page, setPage] =useState(1);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const handlePages = (updatePage:number) => setPage(updatePage);
+  const handleChange = (newSelectedOptions: Option[]) => {
+    setSelectedOptions(newSelectedOptions);
+  };
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
+  };
+  
+  const getTitle = (value: Option[]) => {
+    if (value.length === 0) {
+      return "Categories"; 
+    } else {
+      return value.map((option) => option.value).join(", ");
+    }
+  };
+  useEffect(() => {
+    const fetch = async () => {
+      const result = await axios({
+        method: 'get',
+        url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeNutrition=true` //добавить параметр number для количества записей (по умолчанию 10)
+      })
+      setRecipes(
+        result.data.results.map((raw: { id: number; image: string; title: string; readyInMinutes: number; nutrition: { ingredients: { name: string; }[]; nutrients: { amount: number; }[]; }; }) => ({
+          id: raw.id,
+          image: raw.image,
+          title: raw.title,
+          readyInMinutes: raw.readyInMinutes,
+          ingredients: raw.nutrition.ingredients.map((ing: { name: string; }) => ing.name).join(' + '),
+          kcal: raw.nutrition.nutrients[0].amount
+        }))
+      );
+      setLoading(false);
+    };
+    fetch();
+  }, []);
+  return (
+    <div className="recipes-page">
+      {loading? <Loader size="l"/>:
+      <>
+      <img className="image-recipes" src="src\assets\frame.svg" />
+      <div className="recipes">
+        <Text view="p-20" color="primary">
+          Find the perfect food and <span style={{ textDecoration: 'underline' }}>drink ideas</span> for every occasion , from <span style={{ textDecoration: 'underline' }}> weeknight dinners</span> to <span style={{ textDecoration: 'underline' }}>holiday feasts</span>.
+        </Text>
+        <div className="search-filter-container">
+          <div className="search-field">
+            <Input
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Enter dishes"
+            />
+            <Button>
+              <img src="src\assets\search-button.svg" />
+            </Button>
+          </div>
+          <MultiDropdown
+            value={selectedOptions}
+            options={OPTIONS}
+            onChange={handleChange}
+            getTitle={getTitle}
+            className="food-categories"
+          />
+        </div>
+        <div className="items">
+          {recipes.slice((page - 1) * 9, page * 9).map((recipe: Recipe) => (
+            <Card
+              key={recipe.id}
+              title={recipe.title}
+              image={recipe.image}
+              subtitle={recipe.ingredients}
+              className="recipe-card"
+              captionSlot={<div className='caption-slot'><img src='src\assets\time-preparation-logo.svg'/> <Text weight="medium">{recipe.readyInMinutes} minutes</Text></div>}
+              actionSlot={<div className='action-slot'><Text weight="bold" color='accent' view='p-18'>{recipe.kcal} kcal</Text><Button>Save</Button></div>}
+              onClick={() =>navigate(`/recipes/${recipe.id}`)}
+            />
+          ))}
+        </div>
+        <Pagination
+          page={page}
+          totalPages={Math.ceil(recipes.length/9)}
+          handlePagination={handlePages}/>
+      </div>
+      </>}
+    </div>
+  );
+};
+
+export default RecipesPage;

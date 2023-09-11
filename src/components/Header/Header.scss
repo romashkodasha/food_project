@@ -1,0 +1,43 @@
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFF;
+    width: 100%;
+    height: 64px;
+    padding-left: 100px;
+    padding-right: 100px;
+    justify-content: space-between;
+}
+.nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.logo{
+    width: 36px;
+    height: 36px;
+    margin-right: 20px;
+}
+.navigation {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-m);
+}
+
+.auth-fav{
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    
+}
+
+.logo-heart{
+    width: 17px;
+    height: 17px;
+}
+
+.logo-auth{
+    width: 24px;
+    height: 24px;
+}

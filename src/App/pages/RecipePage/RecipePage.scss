@@ -1,0 +1,118 @@
+.recipe-page {
+  padding: 49px 100px;
+  position: relative;
+  height: 100vh;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 37px;
+  & > button {
+    background: transparent;
+    border: none;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.withImage {
+  display: flex;
+  flex-direction: row;
+  gap: 166px;
+  align-items: center;
+  & > img {
+    border-radius: var(--border-radius);
+  }
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.info {
+  display: flex;
+  gap: 100px;
+  flex-direction: row;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+    align-items: center;
+  }
+}
+
+.text-container {
+  padding: 36px;
+  border-radius: var(--border-radius);
+  background: rgba(181, 70, 15, 0.33);
+}
+
+.ingredients-equipment {
+  display: flex;
+  flex-direction: row;
+}
+
+.ie-items {
+  margin-top: var(--space-xl);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xxs) 29px;
+
+  &.ing {
+    width: 628px;
+  }
+  & > div {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-m);
+    align-items: center;
+  }
+}
+
+.separator {
+  position: relative;
+  width: 7px;
+  margin-right: 50px;
+}
+.vertical-line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 12px;
+  left: 3px;
+  background: var(--brand);
+}
+
+.dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background-color: var(--brand);
+  border-radius: 50%;
+}
+
+.directions{
+    width: 700px;
+}
+
+.steps{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    margin-top: var(--space-xl);
+    &>div{
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}

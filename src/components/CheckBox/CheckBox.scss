@@ -1,0 +1,30 @@
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 40px;
+  height: 40px;
+  background: var(--checkbox-bg);
+  cursor: pointer;
+}
+
+.custom-checkbox input[type="checkbox"]:disabled {
+  background: var(--checkbox-bg-disabled);
+  border: none;
+}
+
+.check-icon {
+  position: absolute;
+}
+
+.custom-checkbox input[type="checkbox"]:not([disabled]):hover {
+  border: 1px solid var(--checkbox-border-hover);
+}
