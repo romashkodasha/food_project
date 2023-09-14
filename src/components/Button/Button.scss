@@ -1,11 +1,12 @@
+@import '/src/variables.scss' ;
 
 .button {
-    padding-left: var(--space-l);
-    padding-right: var(--space-l);
-    padding-top: var(--space-s);
-    padding-bottom: var(--space-s);
-    background: var(--button-primary-bg);
-    color: var(--button-primary-text);
+    padding-left: $space-l;
+    padding-right: $space-l;
+    padding-top: $space-s;
+    padding-bottom: $space-s;
+    background: $button-primary-bg;
+    color: $button-primary-text;
     font-size:18px;
     border: none;
     border-radius: 10px;
@@ -13,24 +14,24 @@
 }
 
 .button:not(:disabled):hover{
-    background: var(--button-primary-bg-hover);
-    color: var(--button-primary-text-hover);
+    background: $button-primary-bg-hover;
+    color: $button-primary-text-hover;
 }
 
 .button-disabled{
-    background: var(--button-primary-bg-disabled);
-    color: var(--button-primary-text-disabled);
+    background: $button-primary-bg-disabled;
+    color: v$button-primary-text-disabled;
 }
 
 .button:active{
-    background: var(--button-primary-bg-active);
-    color: var(--button-primary-text-active);
+    background: $button-primary-bg-active;
+    color: $button-primary-text-active;
 }
 
 .button-loading{
     display:flex;
     flex-direction: row;
-    gap: var(--space-xxs);
+    gap: $space-xxs;
     align-items: center;
 
 }

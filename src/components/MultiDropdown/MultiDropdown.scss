@@ -1,25 +1,26 @@
+@import '/src/variables.scss' ;
+
 .input-container.open{
     display: flex;
     flex-direction: column;
-    gap: var(--space-xxs);
+    gap: $space-xxs;
     
 }
 
-
 .option {
-    padding-left: var(--space-xs);
-    padding-right: var(--space-xs);
-    padding-top: var(--space-s);
-    padding-bottom: var(--space-s);
-    background-color: var(--dropdown-options-bg);
+    padding-left: $space-xs;
+    padding-right: $space-xs;
+    padding-top: $space-s;
+    padding-bottom: $space-s;
+    background-color: $dropdown-options-bg;
 }
 
 .option:hover{
-    color: var(--text-secondary);
+    color: $text-secondary;
 }
 
 .option.selected{
-    color: var(--text-accent);
+    color: $text-accent;
 }
 
 .options {

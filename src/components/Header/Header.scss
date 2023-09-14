@@ -1,3 +1,5 @@
+@import '/src/variables.scss' ;
+
 header {
     display: flex;
     flex-direction: row;
@@ -22,7 +24,7 @@ header {
 .navigation {
     display: flex;
     flex-direction: row;
-    gap: var(--space-m);
+    gap: $space-m;
 }
 
 .auth-fav{

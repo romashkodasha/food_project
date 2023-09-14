@@ -7,7 +7,7 @@ const Header = () => {
   const location = useLocation();
   return (
     <header>
-      <div className='nav'>
+      <div className="nav">
         <img
           className="logo"
           alt="logo"

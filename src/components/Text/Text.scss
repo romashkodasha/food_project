@@ -1,34 +1,70 @@
-.title{
-    font-size: 44px;
-    font-style: normal;
+@import '/src/variables.scss';
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+text.text_view-button {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.text.text_view-title {
+  font-size: 44px;
+  line-height: 48px;
+  font-weight: 700;
+}
+
+.text.text_view-p-20 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.text.text_view-p-18 {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.text.text_view-p-16 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.text.text_view-p-14 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.text.text_weight-normal{
+    font-weight: 400;
+}
+
+.text.text_weight-medium{
+    font-weight: 600;
+}
+
+.text.text_weight-bold{
     font-weight: 700;
-    line-height: 48px; 
 }
 
-.p-20{
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
+.text.text_color-primary{
+    color: $text-primary
 }
 
-.p-18{
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px; 
+.text.text_color-secondary{
+    color: $text-secondary
 }
 
-.p-16{
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
+.text.text_color-accent{
+    color: $text-accent
 }
 
-.p-14{
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 18px;
+.text.text_multi-ellipsis{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines-count);
 }
+

@@ -1,3 +1,5 @@
+@import '/src/variables.scss';
+
 .recipe-page {
   padding: 49px 100px;
   position: relative;
@@ -23,7 +25,7 @@
   gap: 166px;
   align-items: center;
   & > img {
-    border-radius: var(--border-radius);
+    border-radius: $border-radius;
   }
 }
 
@@ -46,14 +48,14 @@
   & > div {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xxs);
+    gap: $space-xxs;
     align-items: center;
   }
 }
 
 .text-container {
   padding: 36px;
-  border-radius: var(--border-radius);
+  border-radius: $border-radius;
   background: rgba(181, 70, 15, 0.33);
 }
 
@@ -63,20 +65,20 @@
 }
 
 .ie-items {
-  margin-top: var(--space-xl);
+  margin-top: $space-xl;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xxs) 29px;
+  gap: $space-xxs 29px;
 
   &.ing {
     width: 628px;
   }
-  & > div {
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-m);
-    align-items: center;
-  }
+}
+.ie-items__div {
+  display: flex;
+  flex-direction: row;
+  gap: $space-m;
+  align-items: center;
 }
 
 .separator {
@@ -90,29 +92,30 @@
   height: 100%;
   top: 12px;
   left: 3px;
-  background: var(--brand);
+  background: $brand;
 }
 
 .dot {
   position: absolute;
   width: 7px;
   height: 7px;
-  background-color: var(--brand);
+  background-color: $brand;
   border-radius: 50%;
 }
 
-.directions{
-    width: 700px;
+.directions {
+  width: 700px;
 }
 
-.steps{
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-m);
-    margin-top: var(--space-xl);
-    &>div{
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: $space-m;
+  margin-top: $space-xl;
+}
+
+.steps__div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }

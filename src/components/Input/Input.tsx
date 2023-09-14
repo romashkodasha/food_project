@@ -1,9 +1,9 @@
-import React from 'react';
-import './Input.scss'
+import React from "react";
+import "./Input.scss";
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  'onChange' | 'value'
+  "onChange" | "value"
 > & {
   /** Значение поля */
   value: string;
@@ -32,7 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {afterSlot && <div className="input-icon">{afterSlot}</div>}
       </div>
     );
-  }
+  },
 );
 
 export default Input;
