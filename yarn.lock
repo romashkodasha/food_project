@@ -137,6 +137,11 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.22.15.tgz#601fa28e4cc06786c18912dca138cec73b882044"
   integrity sha512-4E/F9IIEi8WR94324mbDUMo074YTheJmd7eZF5vITTeYchqAi6sYXRLHUVsmkdmY4QjfKTcB2jB7dVP3NaBElQ==
 
+"@babel/helper-validator-identifier@^7.22.19":
+  version "7.22.19"
+  resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.22.19.tgz#2f34ab1e445f5b95e2e6edfe50ea2449e610583a"
+  integrity sha512-Tinq7ybnEPFFXhlYOYFiSjespWQk0dq2dRNAiMdRTOYQzEGqnnNyrTxPYHP5r6wGjlF1rFgABdDV0g8EwD6Qbg==
+
 "@babel/helper-validator-option@^7.22.15":
   version "7.22.15"
   resolved "https://registry.yarnpkg.com/@babel/helper-validator-option/-/helper-validator-option-7.22.15.tgz#694c30dfa1d09a6534cdfcafbe56789d36aba040"
@@ -248,6 +253,15 @@
   dependencies:
     "@babel/helper-string-parser" "^7.22.5"
     "@babel/helper-validator-identifier" "^7.22.15"
+    to-fast-properties "^2.0.0"
+
+"@babel/types@^7.22.19":
+  version "7.22.19"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.22.19.tgz#7425343253556916e440e662bb221a93ddb75684"
+  integrity sha512-P7LAw/LbojPzkgp5oznjE6tQEIWbp4PkkfrZDINTro9zgBRtI324/EYsiSI7lhPbpIQ+DCeR2NNmMWANGGfZsg==
+  dependencies:
+    "@babel/helper-string-parser" "^7.22.5"
+    "@babel/helper-validator-identifier" "^7.22.19"
     to-fast-properties "^2.0.0"
 
 "@cspotcode/source-map-support@^0.8.0":

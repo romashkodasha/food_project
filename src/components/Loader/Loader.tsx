@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loader.scss'
+import styles from './Loader.module.scss'
 
 export type LoaderProps = {
     /** Размер */
@@ -9,12 +9,12 @@ export type LoaderProps = {
 };
 
 const Loader: React.FC<LoaderProps> = ({size='l', className='', ...rest}) => {
-    const loaderClasses = ['loader', className];
+    const loaderClasses = [styles.loader, className];
     if (size === 's'){
-        loaderClasses.push('s');
+        loaderClasses.push(styles.s);
     } else if (size === 'm'){
-        loaderClasses.push('m');
-    } else loaderClasses.push('l');
+        loaderClasses.push(styles.m);
+    } else loaderClasses.push(styles.l);
 
     return <div className={loaderClasses.join(' ')} {...rest}></div>;
 };

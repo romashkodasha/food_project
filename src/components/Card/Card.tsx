@@ -1,6 +1,6 @@
 import React from "react";
 import Text from "../Text/Text";
-import "./Card.scss";
+import styles from "./Card.module.scss";
 
 export type CardProps = {
   /** Дополнительный classname */
@@ -35,15 +35,14 @@ const Card: React.FC<CardProps> = ({
     className = "";
   }
   return (
-    <div className={`card ${className}`} onClick={onClick}>
-      <div className='card-image-container'>
-        <img src={image} alt="card" className="card-image" />
+    <div className={`${styles.card} ${styles[className]}`} onClick={onClick}>
+      <div className={styles.card_image_container}>
+        <img src={image} alt="card" className={styles.card_image} />
       </div>
-      <div className="card-body">
-        <div className="card-info">
+      <div className={styles.card_body}>
+        <div className={styles.card_info}>
           {captionSlot && (
             <Text
-              className="card-caption"
               view="p-14"
               color="secondary"
               weight="medium"
@@ -52,26 +51,24 @@ const Card: React.FC<CardProps> = ({
             </Text>
           )}
 
-          <Text className="card-title" view="p-20" weight="medium" maxLines={2}>
+          <Text view="p-20" weight="medium" maxLines={2}>
             {title}
           </Text>
           <Text
-            className="card-subtitle"
             view="p-16"
             color="secondary"
             maxLines={3}
-            data-testid="text"
           >
             {subtitle}
           </Text>
         </div>
-        <div className="card-footer">
+        <div className={styles.card_footer}>
           {contentSlot && (
-            <Text className="card-content" view="p-18" weight="bold">
+            <Text  view="p-18" weight="bold">
               {contentSlot}
             </Text>
           )}
-          {actionSlot && <div className="card-action">{actionSlot}</div>}
+          {actionSlot && <div className={styles.card_action}>{actionSlot}</div>}
         </div>
       </div>
     </div>

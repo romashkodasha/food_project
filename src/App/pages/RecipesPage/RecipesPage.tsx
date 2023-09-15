@@ -1,4 +1,4 @@
-import './RecipesPage.scss';
+import './RecipesPage.module.scss';
 import Text from '../../../components/Text';
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -10,6 +10,7 @@ import { Pagination } from 'components/Pagination';
 import { useNavigate } from 'react-router-dom';
 import Loader from 'components/Loader';
 import { apiKey } from './../../../../apiKey';
+import styles from './RecipesPage.module.scss';
 
 const OPTIONS: Option[] = [
   { key: 'kt1', value: 'Kategoria1' },
@@ -62,8 +63,8 @@ const RecipesPage = () => {
     }
   };
   useEffect(() => {
+    setLoading(true);
     const fetch = async () => {
-      setLoading(true);
       const result = await axios({
         method: 'get',
         url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeNutrition=true`, //добавить параметр number для количества записей (по умолчанию 10)
@@ -90,15 +91,15 @@ const RecipesPage = () => {
         <Loader size="l" />
       ) : (
         <>
-          <img className="image-recipes" src="..\src\assets\frame.svg" />
-          <div className="recipes">
+          <img className={styles.image_recipes} src="..\src\assets\frame.svg" />
+          <div className={styles.recipes}>
             <Text view="p-20" color="primary">
               Find the perfect food and <span style={{ textDecoration: 'underline' }}>drink ideas</span> for every
               occasion , from <span style={{ textDecoration: 'underline' }}> weeknight dinners</span> to{' '}
               <span style={{ textDecoration: 'underline' }}> holiday feasts</span>
             </Text>
-            <div className="search-filter-container">
-              <div className="search-field">
+            <div className={styles.search_filter_container}>
+              <div className={styles.search_field}>
                 <Input value={inputValue} onChange={handleInputChange} placeholder="Enter dishes" />
                 <Button>
                   <img src="..\src\assets\search-button.svg" />
@@ -109,25 +110,25 @@ const RecipesPage = () => {
                 options={OPTIONS}
                 onChange={handleChange}
                 getTitle={getTitle}
-                className="food-categories"
+                className="food_categories"
               />
             </div>
-            <div className="items">
+            <div className={styles.items}>
               {recipes.slice((page - 1) * 9, page * 9).map((recipe: Recipe) => (
                 <Card
                   key={recipe.id}
                   title={recipe.title}
                   image={recipe.image}
                   subtitle={recipe.ingredients}
-                  className="recipe-card"
+                  className="recipe_card"
                   captionSlot={
-                    <div className="caption-slot">
+                    <div className={styles.caption_slot}>
                       <img src="..\src\assets\time-preparation-logo.svg" />{' '}
                       <Text weight="medium">{recipe.readyInMinutes} minutes</Text>
                     </div>
                   }
                   actionSlot={
-                    <div className="action-slot">
+                    <div className={styles.action_slot}>
                       <Text weight="bold" color="accent" view="p-18">
                         {recipe.kcal} kcal
                       </Text>

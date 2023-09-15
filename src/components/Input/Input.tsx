@@ -1,5 +1,5 @@
 import React from "react";
-import "./Input.scss";
+import styles from "./Input.module.scss";
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -21,15 +21,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <div className={`input-container ${className}`}>
+      <div className={`${styles.input_container} ${className}`}>
         <input
           {...restProps}
           type="text"
           value={value}
           onChange={handleChange}
-          className="input-field"
+          className={styles.input_field}
         />
-        {afterSlot && <div className="input-icon">{afterSlot}</div>}
+        {afterSlot && <div className={styles.input_icon}>{afterSlot}</div>}
       </div>
     );
   },

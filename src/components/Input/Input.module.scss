@@ -1,12 +1,12 @@
 @import '/src/variables.scss' ;
 
-.input-container {
+.input_container {
   position: relative;
   height: 52px;
   width: 100%;
 }
 
-.input-field {
+.input_field {
   padding-right: 44px;
   padding-left: $space-xs;
   padding-top: $space-s;
@@ -20,24 +20,24 @@
   border-radius: 10px;
 }
 
-.input-field::placeholder {
+.input_field::placeholder {
   color: $input-placeholder;
 }
 
-.input-field:focus,
+.input_field:focus,
 :focus-visible {
   outline: none;
   border: 1px solid $input-border-focus;
 }
 
-.input-field:disabled {
+.input_field:disabled {
   outline: none;
   border: 1px solid $input-border-disabled;
   background: $input-bg-disabled;
   color: $input-placeholder;
 }
 
-.input-icon {
+.input_icon {
   position: absolute;
   right: $space-xs;
   top: 50%;

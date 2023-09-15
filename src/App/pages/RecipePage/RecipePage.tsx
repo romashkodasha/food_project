@@ -1,4 +1,4 @@
-import './RecipePage.scss';
+import styles from './RecipePage.module.scss';
 import { useParams } from 'react-router-dom';
 import Text from 'components/Text';
 import ArrowRightIcon from 'components/icons/ArrowRightIcon';
@@ -29,8 +29,8 @@ const RecipePage = () => {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     const fetch = async () => {
-      setLoading(true);
       const result = await axios({
         method: 'get',
         url: `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`,
@@ -61,12 +61,12 @@ const RecipePage = () => {
   }, [id]);
   
   return (
-    <div className="recipe-page">
+    <div className={styles.recipe_page}>
       {loading || !recipe ? (
         <Loader size="l" />
       ) : (
         <>
-          <section className="title">
+          <section className={styles.title}>
             <button
               onClick={() => {
                 navigate('/recipes');
@@ -77,12 +77,12 @@ const RecipePage = () => {
             </button>
             <Text view="title">{recipe.title}</Text>
           </section>
-          <div className="recipe">
-            <section className="withImage">
+          <div className={styles.recipe}>
+            <section className={styles.withImage}>
               <img src={recipe.image} />
-              <div className="info">
-                <div className="info-group">
-                  <div>
+              <div className={styles.info}>
+                <div className={styles.info_group}>
+                  <div className={styles.info_group_div}>
                     <Text color="primary" view="p-16">
                       Preparation
                     </Text>
@@ -90,7 +90,7 @@ const RecipePage = () => {
                       {recipe.preparation} minutes
                     </Text>
                   </div>
-                  <div>
+                  <div className={styles.info_group_div}>
                     <Text color="primary" view="p-16">
                       Ratings
                     </Text>
@@ -99,8 +99,8 @@ const RecipePage = () => {
                     </Text>
                   </div>
                 </div>
-                <div className="info-group">
-                  <div>
+                <div className={styles.info_group}>
+                  <div className={styles.info_group_div}>
                     <Text color="primary" view="p-16">
                       Cooking
                     </Text>
@@ -108,7 +108,7 @@ const RecipePage = () => {
                       {recipe.cooking} minutes
                     </Text>
                   </div>
-                  <div>
+                  <div className={styles.info_group_div}>
                     <Text color="primary" view="p-16">
                       Servings
                     </Text>
@@ -117,8 +117,8 @@ const RecipePage = () => {
                     </Text>
                   </div>
                 </div>
-                <div className="info-group">
-                  <div>
+                <div className={styles.info_group}>
+                  <div className={styles.info_group_div}>
                     <Text color="primary" view="p-16">
                       Total
                     </Text>
@@ -129,36 +129,36 @@ const RecipePage = () => {
                 </div>
               </div>
             </section>
-            <section className="text-container">
+            <section className={styles.text_container}>
               <Text view="p-16" color="primary">
                 {ReactHtmlParser(recipe.summary ?? '')}
               </Text>
             </section>
-            <section className="ingredients-equipment">
+            <section className={styles.ingredients_equipment}>
               <div>
                 <Text view="p-20" weight="medium">
                   Ingredients
                 </Text>
-                <div className="ie-items ing">
+                <div className={`${styles.ie_items} ${styles.ing}`}>
                   {recipe.ingredients.map((ingredient) => (
-                    <div key={ingredient} className="ie-items__div">
+                    <div key={ingredient} className={styles.ie_items__div}>
                       <img src="..\src\assets\ingredients-logo.svg"></img>
                       <div>{ingredient}</div>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="separator">
-                <div className="vertical-line" />
-                <div className="dot" />
+              <div className={styles.separator}>
+                <div className={styles.vertical_line} />
+                <div className={styles.dot} />
               </div>
               <div>
                 <Text view="p-20" weight="medium">
                   Equipment
                 </Text>
-                <div className="ie-items eq">
+                <div className={styles.ie_items}>
                   {recipe.equipment.map((equipment) => (
-                    <div key={equipment} className="ie-items__div">
+                    <div key={equipment} className={styles.ie_items__div}>
                       <img src="..\src\assets\equipment-logo.svg"></img>
                       <div>{equipment}</div>
                     </div>
@@ -166,13 +166,13 @@ const RecipePage = () => {
                 </div>
               </div>
             </section>
-            <section className="directions">
+            <section className={styles.directions}>
               <Text view="p-20" weight="medium">
                 Directions
               </Text>
-              <div className="steps">
+              <div className={styles.steps}>
                 {recipe.directions.map((dir) => (
-                  <div key={dir.numStep} className="steps__div">
+                  <div key={dir.numStep} className={styles.steps__div}>
                     <Text view="p-16" weight="medium">
                       Step {dir.numStep}
                     </Text>

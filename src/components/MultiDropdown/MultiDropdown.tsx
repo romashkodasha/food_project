@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Input from '../Input/Input';
 import ArrowDownIcon from '../icons/ArrowDownIcon/ArrowDownIcon';
-import './MultiDropdown.scss';
+import styles from './MultiDropdown.module.scss';
 
 export type Option = {
   /** Ключ варианта, используется для отправки на бек/использования в коде */
@@ -26,7 +26,7 @@ export type MultiDropdownProps = {
 };
 
 const MultiDropdown: React.FC<MultiDropdownProps> = ({
-  className,
+  className='',
   options,
   value,
   onChange,
@@ -78,7 +78,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
     if (isDropdownOpen){
       setInputValue('');
     }
-  }, [isDropdownOpen, value]);
+  }, [getTitle, isDropdownOpen, value]);
 
 
   const filteredOptions = options.filter((option) =>
@@ -86,8 +86,8 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   );
 
   return (
-    <div className={`multi-dropdown ${className || ''}`} ref={dropdownRef} >
-      <div className={`input-container ${isDropdownOpen ? 'open' : 'closed'}`}>
+    <div className={styles[className]} ref={dropdownRef} >
+      <div className={styles[`input-container ${isDropdownOpen ? 'open' : 'closed'}`]}>
         <Input
           value={inputValue}
           onChange={handleInputChange}
@@ -98,15 +98,15 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
         />
         <div
           ref={dropdownRef}
-          className='options'
+          className={styles.options}
         >
           {(isDropdownOpen && !disabled)&& 
             filteredOptions.map((option) => (
               <div
                 key={option.key}
-                className={`option ${
+                className={styles[`option ${
                   value.some((v) => v.key === option.key) ? 'selected' : ''
-                }`}
+                }`]}
                 onClick={() => handleOptionClick(option)}
               >
                 {option.value}

@@ -1,4 +1,4 @@
-import "./Header.scss";
+import styles from "./Header.module.scss";
 import { Link, useLocation } from "react-router-dom";
 
 import Text from "../Text";
@@ -7,16 +7,16 @@ const Header = () => {
   const location = useLocation();
   return (
     <header>
-      <div className="nav">
+      <div className={styles.nav}>
         <img
-          className="logo"
+          className={styles.logo}
           alt="logo"
           src="..\src\assets\logo-simple-framed-green-gradient.svg"
         />
         <Text color="primary" view="p-20" weight="bold">
           Food client
         </Text>
-        <ul className="navigation">
+        <ul className={styles.navigation}>
           <Text
             view="p-16"
             tag="span"
@@ -39,14 +39,14 @@ const Header = () => {
           </Text>
         </ul>
       </div>
-      <div className="auth-fav">
+      <div className={styles.auth_fav}>
         <img
-          className="logo-heart"
+          className={styles.logo_heart}
           alt="logo-heart"
           src="..\src\assets\logo-heart.svg"
         />
         <img
-          className="logo-user"
+          className={styles.logo_user}
           alt="logo-user"
           src="..\src\assets\logo-user.svg"
         />

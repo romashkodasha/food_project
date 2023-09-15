@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckIcon from '../icons/CheckIcon/CheckIcon';
-import './CheckBox.scss';
+import styles from './CheckBox.module.scss';
 
 export type CheckBoxProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -19,7 +19,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
     onChange(e.target.checked);
   };
   return (
-    <label className="custom-checkbox">
+    <label className={styles.custom_checkbox}>
       <input
         type="checkbox"
         onChange={handleChange}
@@ -31,7 +31,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
           color='accent'
           width={40}
           height={40}
-          className={restProps.disabled? "check-icon-disabled" : "check-icon"}
+          className={restProps.disabled? "check_icon_disabled" : "check_icon"}
         />
       )}
     </label>
