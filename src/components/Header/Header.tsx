@@ -23,19 +23,19 @@ const Header = () => {
             color={location.pathname === "/" ? "accent" : "primary"}
             weight={location.pathname === "/" ? "medium" : "normal"}
           >
-            <Link to="/recipes">Recipes</Link>
+            <Link to="/recipes" className={styles.link}>Recipes</Link>
           </Text>
           <Text view="p-16" tag="span" color="primary">
-            <Link to="">Ingradients</Link>
+            <Link to="" className={styles.link}>Ingradients</Link>
           </Text>
           <Text view="p-16" tag="span" color="primary">
-            <Link to=""> Products</Link>
+            <Link to="" className={styles.link}> Products</Link>
           </Text>
           <Text view="p-16" tag="span" color="primary">
-            <Link to=""> Menu Items</Link>
+            <Link to="" className={styles.link}> Menu Items</Link>
           </Text>
           <Text view="p-16" tag="span" color="primary">
-            <Link to="">Meal Planning</Link>
+            <Link to="" className={styles.link}>Meal Planning</Link>
           </Text>
         </ul>
       </div>

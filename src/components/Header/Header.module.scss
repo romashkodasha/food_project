@@ -1,4 +1,4 @@
-@import '/src/variables.scss' ;
+@import '/src/styles/variables.scss' ;
 
 header {
     display: flex;
@@ -42,4 +42,8 @@ header {
 .logo_auth{
     width: 24px;
     height: 24px;
+}
+
+.link{
+    @include link-reset();
 }
