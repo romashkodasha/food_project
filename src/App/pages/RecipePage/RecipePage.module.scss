@@ -58,6 +58,9 @@
     padding: 36px;
     border-radius: $border-radius;
     background: rgba(181, 70, 15, 0.33);
+    a {
+        color: inherit;
+    }
 }
 
 .ingredients_equipment {
