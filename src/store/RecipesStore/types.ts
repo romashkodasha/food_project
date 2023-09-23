@@ -6,7 +6,3 @@ export type GetRecipesListParams = {
     type?: string;
 }
 
-export type GetRecipeItemParams ={
-    apiKey: string;
-    id: number;
-}

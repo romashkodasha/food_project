@@ -1,9 +1,10 @@
 @import '/src/styles/variables.scss' ;
 
-.input_container.open{
+.input_container_open{
     display: flex;
     flex-direction: column;
     gap: $space-xxs;
+    position: relative;
     
 }
 
@@ -13,18 +14,25 @@
     padding-top: $space-s;
     padding-bottom: $space-s;
     background-color: $dropdown-options-bg;
+    border-radius: inherit;
 }
 
 .option:hover{
     color: $text-secondary;
 }
 
-.option.selected{
+.selected{
     color: $text-accent;
 }
 
 .options {
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    width: 100%;
+    position: absolute;
+    top: calc(100% + $space-xxs);
+    border-radius: $border-radius;  
+    background-color: $dropdown-options-bg;  
 }
 
 .food_categories{

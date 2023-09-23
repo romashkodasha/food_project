@@ -38,10 +38,9 @@ const RecipesPage = () => {
 
     const handlePages = useCallback(
         (updatePage: number) => {
-
             if (location.search) {
                 searchParams.set('page', updatePage.toString())
-                
+
                 navigate(location.pathname + `?${searchParams.toString()}`)
             } else {
                 navigate(`/recipes?page=${updatePage}`)
@@ -51,7 +50,6 @@ const RecipesPage = () => {
     )
     const handleChange = useCallback(
         (newSelectedOptions: Option[]) => {
-            
             const options = newSelectedOptions
                 .map((op) => {
                     if (op.value !== '') return op.value
@@ -61,9 +59,9 @@ const RecipesPage = () => {
                 console.log(searchParams.toString())
                 searchParams.set('type', options)
                 navigate(location.pathname + `?${searchParams.toString()}`)
+            } else {
+                navigate(`/recipes?type=${options}`)
             }
-            else{
-            navigate(`/recipes?type=${options}`)}
         },
         [location.pathname, location.search, navigate]
     )
@@ -83,70 +81,73 @@ const RecipesPage = () => {
             query: currentQueryString,
             type: currentTypeString,
         })
-    }, [recipesStore,currentTypeString])
+    }, [recipesStore, currentTypeString])
     return (
         <Provider value={recipesStore}>
             <div className="recipes-page">
-                {recipesStore.meta === Meta.loading ? (
-                    <Loader size="l" />
-                ) : (
-                    <>
-                        <img
-                            className={styles.image_recipes}
-                            src="..\src\assets\frame.svg"
+                <img
+                    className={styles.image_recipes}
+                    src="..\src\assets\frame.svg"
+                />
+                <div className={styles.recipes}>
+                    <Text view="p-20" color="primary">
+                        Find the perfect food and{' '}
+                        <span style={{ textDecoration: 'underline' }}>
+                            drink ideas
+                        </span>{' '}
+                        for every occasion , from{' '}
+                        <span style={{ textDecoration: 'underline' }}>
+                            {' '}
+                            weeknight dinners
+                        </span>{' '}
+                        to{' '}
+                        <span style={{ textDecoration: 'underline' }}>
+                            {' '}
+                            holiday feasts
+                        </span>
+                    </Text>
+                    <div className={styles.search_filter_container}>
+                        <Search searchParams={searchParams} />
+                        <MultiDropdown
+                            value={
+                                currentTypeString
+                                    ? currentTypeString
+                                          .split(',')
+                                          .map((val) => ({
+                                              key: val,
+                                              value: val,
+                                          }))
+                                    : []
+                            }
+                            options={mealTypes}
+                            onChange={handleChange}
+                            getTitle={getTitle}
+                            className="food_categories"
                         />
-                        <div className={styles.recipes}>
-                            <Text view="p-20" color="primary">
-                                Find the perfect food and{' '}
-                                <span style={{ textDecoration: 'underline' }}>
-                                    drink ideas
-                                </span>{' '}
-                                for every occasion , from{' '}
-                                <span style={{ textDecoration: 'underline' }}>
-                                    {' '}
-                                    weeknight dinners
-                                </span>{' '}
-                                to{' '}
-                                <span style={{ textDecoration: 'underline' }}>
-                                    {' '}
-                                    holiday feasts
-                                </span>
-                            </Text>
-                            <div className={styles.search_filter_container}>
-                                <Search searchParams={searchParams}/>
-                                <MultiDropdown
-                                    value={
-                                        currentTypeString
-                                            ? currentTypeString
-                                                  .split(',')
-                                                  .map((val) => ({
-                                                      key: val,
-                                                      value: val,
-                                                  }))
-                                            : []
-                                    }
-                                    options={mealTypes}
-                                    onChange={handleChange}
-                                    getTitle={getTitle}
-                                    className="food_categories"
+                    </div>
+                    <div className={styles.list_container}>
+                        {recipesStore.meta === Meta.loading ? (
+                            <Loader size="l" />
+                        ) : (
+                            <>
+                                <RecipesList
+                                    list={recipesStore.list.slice(
+                                        (page - 1) * 9,
+                                        page * 9
+                                    )}
                                 />
-                            </div>
-                            <RecipesList
-                                list={recipesStore.list.slice(
-                                    (page - 1) * 9,
-                                    page * 9
-                                )}
-                            />
-                            <Pagination
-                                page={page}
-                                totalPages={Math.ceil(
-                                    recipesStore.list.length / 9
-                                )}
-                                handlePagination={handlePages}
-                            />
-                        </div>
-                    </>
-                )}
+
+                                <Pagination
+                                    page={page}
+                                    totalPages={Math.ceil(
+                                        recipesStore.list.length / 9
+                                    )}
+                                    handlePagination={handlePages}
+                                />
+                            </>
+                        )}
+                    </div>
+                </div>
             </div>
         </Provider>
     )

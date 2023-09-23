@@ -1,4 +1,4 @@
-export type RecipesListApi = {
+export type RecipeItemApi = {
     id: number
     image: string
     title: string
@@ -9,7 +9,7 @@ export type RecipesListApi = {
     }
 }
 
-export type RecipesListModel = {
+export type RecipeItemModel = {
     id: number
     image: string
     title: string
@@ -18,7 +18,7 @@ export type RecipesListModel = {
     kcal: number
 }
 
-export type RecipeItemApi = {
+export type RecipeApi = {
     title: string
     image: string
     preparationMinutes: number
@@ -33,7 +33,7 @@ export type RecipeItemApi = {
     }[]
 }
 
-export type RecipeItemModel = {
+export type RecipeModel = {
     title: string
     image: string
     preparation: number
@@ -48,8 +48,8 @@ export type RecipeItemModel = {
 }
 
 export const normalizeRecipesList = (
-    from: RecipesListApi
-): RecipesListModel => ({
+    from: RecipeItemApi
+): RecipeItemModel => ({
     id: from.id,
     image: from.image,
     title: from.title,
@@ -60,7 +60,7 @@ export const normalizeRecipesList = (
     kcal: from.nutrition.nutrients[0].amount,
 })
 
-export const normalizeRecipeItem = (from: RecipeItemApi): RecipeItemModel => ({
+export const normalizeRecipeItem = (from: RecipeApi): RecipeModel => ({
     title: from.title,
     image: from.image,
     preparation: from.preparationMinutes > 0 ? from.preparationMinutes : 5,
