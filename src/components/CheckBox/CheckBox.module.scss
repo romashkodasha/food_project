@@ -1,0 +1,32 @@
+@import '/src/styles/variables.scss' ;
+
+.custom_checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom_checkbox input[type="checkbox"] {
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 40px;
+  height: 40px;
+  background: $checkbox-bg;
+  cursor: pointer;
+}
+
+.custom_checkbox input[type="checkbox"]:disabled {
+  background: $checkbox-bg-disabled;
+  border: none;
+}
+
+.check_icon {
+  position: absolute;
+}
+
+.custom_checkbox input[type="checkbox"]:not([disabled]):hover {
+  border: 1px solid $checkbox-border-hover;
+}

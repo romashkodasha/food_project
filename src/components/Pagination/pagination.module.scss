@@ -1,0 +1,44 @@
+@import '/src/styles/variables.scss' ;
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.separator {
+  width: 38px;
+  height: 42px;
+  padding: 10px;
+  color: #151411;
+  text-align: center;
+  font-family: Eudoxus Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+}
+
+.pageItem {
+  background: transparent;
+  border: none;
+  height: 42px;
+  width: 38px;
+  line-height: 22px;
+  font-size: 18px;
+  font-weight: 400;
+  color: $text-primary;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.active {
+  background-color: $brand;
+  color: $button-primary-text;
+}
+
+.sides{
+  margin: 0 15px;
+  padding: 5px 3px;
+}

@@ -1,0 +1,37 @@
+@import '/src/styles/variables.scss' ;
+
+.button {
+    padding-left: $space-l;
+    padding-right: $space-l;
+    padding-top: $space-s;
+    padding-bottom: $space-s;
+    background: $button-primary-bg;
+    color: $button-primary-text;
+    font-size:18px;
+    border: none;
+    border-radius: 10px;
+
+}
+
+.button:not(:disabled):hover{
+    background: $button-primary-bg-hover;
+    color: $button-primary-text-hover;
+}
+
+.button_disabled{
+    background: $button-primary-bg-disabled;
+    color: v$button-primary-text-disabled;
+}
+
+.button:active{
+    background: $button-primary-bg-active;
+    color: $button-primary-text-active;
+}
+
+.button_loading{
+    display:flex;
+    flex-direction: row;
+    gap: $space-xxs;
+    align-items: center;
+
+}
