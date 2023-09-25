@@ -14,6 +14,9 @@ import RecipesStore from 'store/RecipesStore'
 import { mealTypes } from 'config/mealTypesConfig'
 import rootStore from 'store/RootStore'
 import { useLocation, useNavigate } from 'react-router-dom'
+import React from 'react'
+
+import frameImage from "assets/frame.svg"
 
 export const RecipesContext = createContext(new RecipesStore())
 const Provider = RecipesContext.Provider
@@ -87,7 +90,7 @@ const RecipesPage = () => {
             <div className="recipes-page">
                 <img
                     className={styles.image_recipes}
-                    src="..\src\assets\frame.svg"
+                    src={frameImage}
                 />
                 <div className={styles.recipes}>
                     <Text view="p-20" color="primary">

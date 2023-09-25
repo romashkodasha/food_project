@@ -7,6 +7,8 @@ import { observer } from 'mobx-react-lite'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { apiKey } from '../../../../../apiKey'
 import { RecipesContext } from './../RecipesPage'
+import React from 'react'
+import searchButton from 'assets/search-button.svg'
 
 export type SearchProps = {
     searchParams: URLSearchParams
@@ -51,7 +53,7 @@ const Search: React.FC<SearchProps>  = ({searchParams}) => {
                 placeholder="Enter dishes"
             />
             <Button onClick={handleSearch}>
-                <img src="..\src\assets\search-button.svg" />
+                <img src={searchButton} />
             </Button>
         </div>
     )
