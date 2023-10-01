@@ -4,6 +4,7 @@ import RecipesPage from './pages/RecipesPage';
 import Header from '../components/Header';
 import './../styles/styles.scss';
 import { useQueryParamsStoreInit } from 'store/RootStore/hooks/useQueryParamsStoreInit';
+import React from 'react';
 
 
 function App() {

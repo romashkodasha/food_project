@@ -1,35 +1,33 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "components/*": ["src/components/*"],
+            "config/*": ["src/config/*"],
+            "styles/*": ["src/styles/*"],
+            "utils/*": ["src/utils/*"],
+            "models/*": ["src/models/*"],
+            "store/*": ["src/store/*"],
+            "assets/*": ["src/assets/*"]
+        },
+        //Не создавать выходные файлы компилятора, например исходный код JavaScript. Для нас это делает Babel.
+        "noEmit": true,
+        //Разрешите импорт файлов .js, а не только файлы .ts и .tsx.
+        "allowJs": true,
+        //Включает создание файлов исходной карты. Эти файлы позволяют отладчикам и другим инструментам отображать исходный код.
+        "sourceMap": true,
+        //Флаг strict включает широкий диапазон действий при проверке типов, что приводит к более сильным гарантиям правильности программы.
+        "strict": true,
+        "strictNullChecks": true,
+        "skipLibCheck": true,
+        "module": "es6",
+        "target": "es6",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
+    },
 
-    
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "baseUrl": "src",
-    "paths": {
-      "components": ["components/*"],
-      "config": ["config/*"],
-      "styles": ["styles/*"],
-      "utils": ["utils/*"],
-      "store":["store/*"],
-      "App":["App/*"]
-    }
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "include": ["src/**/*", "./declaration.d.ts"], // какие файлы включены в проверку
+    "exclude": ["node_modules"] // какие файлы исключены
 }

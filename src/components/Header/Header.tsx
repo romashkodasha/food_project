@@ -1,7 +1,11 @@
 import styles from "./Header.module.scss";
 import { Link, useLocation } from "react-router-dom";
+import mainLogo from 'assets/logo-simple-framed-green-gradient.svg'
+import logoHeart from "assets/logo-heart.svg"
+import logoUser from "assets/logo-user.svg"
 
 import Text from "../Text";
+import React from "react";
 
 const Header = () => {
   const location = useLocation();
@@ -11,7 +15,7 @@ const Header = () => {
         <img
           className={styles.logo}
           alt="logo"
-          src="..\src\assets\logo-simple-framed-green-gradient.svg"
+          src={mainLogo}
         />
         <Text color="primary" view="p-20" weight="bold">
           Food client
@@ -43,12 +47,12 @@ const Header = () => {
         <img
           className={styles.logo_heart}
           alt="logo-heart"
-          src="..\src\assets\logo-heart.svg"
+          src={logoHeart}
         />
         <img
           className={styles.logo_user}
           alt="logo-user"
-          src="..\src\assets\logo-user.svg"
+          src={logoUser}
         />
       </div>
     </header>

@@ -10,6 +10,9 @@ import { apiKey } from './../../../../apiKey';
 import { observer, useLocalStore } from 'mobx-react-lite';
 import RecipeItemStore from 'store/RecipeItemStore';
 import { Meta } from 'utils/meta';
+import React from 'react';
+import ingredientsLogo from "assets/ingredients-logo.svg"
+import equipmentLogo from "assets/equipment-logo.svg"
 
 const RecipePage = () => {
   const recipeItemStore = useLocalStore(() => new RecipeItemStore())
@@ -105,7 +108,7 @@ const RecipePage = () => {
                 <div className={`${styles.ie_items} ${styles.ing}`}>
                   {recipeItemStore.recipe.ingredients.map((ingredient) => (
                     <div key={ingredient} className={styles.ie_items__div}>
-                      <img src="..\src\assets\ingredients-logo.svg"></img>
+                      <img src={ingredientsLogo}></img>
                       <div>{ingredient}</div>
                     </div>
                   ))}
@@ -122,7 +125,7 @@ const RecipePage = () => {
                 <div className={styles.ie_items}>
                   {recipeItemStore.recipe.equipment.map((equipment) => (
                     <div key={equipment} className={styles.ie_items__div}>
-                      <img src="..\src\assets\equipment-logo.svg"></img>
+                      <img src={equipmentLogo}></img>
                       <div>{equipment}</div>
                     </div>
                   ))}
