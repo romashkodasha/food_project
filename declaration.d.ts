@@ -14,6 +14,5 @@ declare module '*.svg' {
     export default content
 }
 
-declare module '*.module.scss'
 
 declare module '*.woff2'
