@@ -1,0 +1,21 @@
+.items {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.favorites_page {
+    padding-left: 7vw;
+    padding-right: 7vw;
+    padding-top: 10px;
+    
+}
+
+.button {
+    position: fixed;
+    bottom: 5px; /* Зафиксировать элемент вверху окна */
+    left: 3vw; /* Положение по горизонтали */
+    z-index: 999; /* Установить z-index для управления слоем элемента */
+}

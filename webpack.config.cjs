@@ -48,6 +48,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            favicon: "./src/favicon.svg",
             template: path.join(srcPath, 'index.html'),
         }),
         !isProd && new ReactRefreshWebpackPlugin(),

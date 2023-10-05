@@ -1,0 +1,87 @@
+@import 'styles/variables.scss';
+
+.chat-container {
+    padding-left: 7vw;
+    padding-right: 7vw;
+    position: fixed;
+    bottom: 7vh;
+    width: 100%;
+}
+
+.chat-input {
+    display: flex;
+    flex-direction: row;
+    gap: $space-l;
+    margin-top: 20px;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: $space-m;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.chat-messages::-webkit-scrollbar {
+    width: 12px; /* ширина всей полосы прокрутки */
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: rgba(255, 192, 118, 0.23);; /* цвет зоны отслеживания */
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: $brand; /* цвет бегунка */
+    border-radius: $border-radius; /* округлось бегунка */
+    border: 3px solid $brand-active; /* отступ вокруг бегунка */
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: $brand;
+}
+
+.message.bot {
+    align-self: flex-start;
+    background-color: $brand-active;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    border-radius: $border-radius;
+    color: $button-primary-text;
+    padding: 20px;
+    gap: 10px;
+    max-width: 80%;
+}
+.suggestions {
+    background-color: $dropdown-options-bg;
+    color: $text-accent;
+    display: flex;
+    padding: 10px;
+    border-radius: $border-radius;
+    flex-direction: column;
+    margin-bottom: 10px;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.slider {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.media_img {
+    border-radius: $border-radius;
+    width:250px
+}
+
+.media-item {
+    margin-left: 2vh;
+    margin-right: 2vh;
+}

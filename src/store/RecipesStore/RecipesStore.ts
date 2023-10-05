@@ -27,19 +27,22 @@ import * as qs from 'qs'
 import rootStore from 'store/RootStore'
 
 
-type PrivateFields = '_list' | '_meta' 
+type PrivateFields = '_list' | '_meta' | '_totalResults'
 
 export default class RecipesStore {
     private _list: CollectionModel<number, RecipeItemModel> =
         getInitialCollectionModel()
     private _meta: Meta = Meta.initial
+    private _totalResults: number = 0
 
     constructor() {
         makeObservable<RecipesStore, PrivateFields>(this, {
             _list: observable.ref,
             _meta: observable,
+            _totalResults:observable,
             list: computed,
             meta: computed,
+            totalResults: computed,
             getRecipesList: action,
         })
     }
@@ -52,10 +55,14 @@ export default class RecipesStore {
         return this._meta
     }
 
+    get totalResults(): number {
+        return this._totalResults
+    }
     
     async getRecipesList(params: GetRecipesListParams): Promise<void> {
         this._meta = Meta.loading
         this._list = getInitialCollectionModel()
+        this._totalResults=0;
         const queryString = qs.stringify(params)
         const response: ApiResponse<
             { totalResults: number; results: RecipeItemApi[] },
@@ -79,6 +86,7 @@ export default class RecipesStore {
                         list,
                         (listItem) => listItem.id
                     )
+                    this._totalResults=response.data.totalResults
 
                     return
                 } catch {
@@ -94,5 +102,6 @@ export default class RecipesStore {
     destroy(): void {
         this._list = getInitialCollectionModel();
         this._meta = Meta.initial;
+        this._totalResults=0;
     }
 }

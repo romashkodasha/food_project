@@ -1,57 +1,50 @@
-import { RecipeItemModel } from "store/models/Recipe"
+import { RecipeItemModel } from 'store/models/Recipe'
 import styles from './../RecipesPage.module.scss'
-import React from "react";
-import Card from "components/Card";
-import Text from "components/Text";
-import Button from "components/Button"
-import { useNavigate } from "react-router-dom";
-import preparationLogo from "assets/time-preparation-logo.svg"
+import React from 'react'
+import RecipeCard from 'components/RecipeCard'
+import { motion } from 'framer-motion'
 
 type RecipesListProps = {
-    list: RecipeItemModel[];
+    list: RecipeItemModel[]
 }
 
-const RecipesList: React.FC<RecipesListProps> = ({list}: RecipesListProps) => {
-    const navigate = useNavigate()
-    return(
-        <div className={styles.items}>
+const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            delayChildren: 0.3,
+            staggerChildren: 0.2,
+        },
+    },
+}
+
+const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+    },
+}
+
+const RecipesList: React.FC<RecipesListProps> = ({
+    list,
+}: RecipesListProps) => {
+    return (
+        <motion.div
+            className={styles.container}
+            variants={container}
+            initial="hidden"
+            animate="visible"
+        >
             {list.map((recipe: RecipeItemModel) => (
-                <Card
-                key={recipe.id}
-                title={recipe.title}
-                image={recipe.image}
-                subtitle={recipe.ingredients}
-                className="recipe_card"
-                captionSlot={
-                    <div
-                        className={styles.caption_slot}
-                    >
-                        <img src={preparationLogo} />{' '}
-                        <Text weight="medium">
-                            {recipe.readyInMinutes}{' '}
-                            minutes
-                        </Text>
-                    </div>
-                }
-                actionSlot={
-                    <div className={styles.action_slot}>
-                        <Text
-                            weight="bold"
-                            color="accent"
-                            view="p-18"
-                        >
-                            {recipe.kcal} kcal
-                        </Text>
-                        <Button>Save</Button>
-                    </div>
-                }
-                onClick={() =>
-                    navigate(`/recipes/${recipe.id}`)
-                }
-            />
+                <motion.div variants={item}>
+                    <RecipeCard recipe={recipe} />
+                </motion.div>
             ))}
-        </div>
+        </motion.div>
     )
 }
 
-export default React.memo(RecipesList);
+export default React.memo(RecipesList)

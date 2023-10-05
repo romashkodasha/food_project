@@ -28,7 +28,6 @@ const Search: React.FC<SearchProps>  = ({searchParams}) => {
         (value: string) => {
             if (location.search){
                 searchParams.set('query', value)
-                console.log(searchParams.toString())
                 navigate(location.pathname + `?${searchParams.toString()}`)
             }
             else{

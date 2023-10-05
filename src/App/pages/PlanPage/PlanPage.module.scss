@@ -1,0 +1,48 @@
+@import 'styles/variables.scss';
+
+.planning_page {
+    padding-left: 7vw;
+    padding-right: 7vw;
+    padding-top: 50px;
+}
+
+.search_field {
+    display: flex;
+    flex-direction: row;
+    gap: $space-xl;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.caption_slot {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+}
+
+.action_slot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.nutrients {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 50px;
+}
+
+.nutrient{
+    margin: 5px;
+}

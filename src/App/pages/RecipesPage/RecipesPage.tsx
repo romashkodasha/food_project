@@ -16,13 +16,14 @@ import rootStore from 'store/RootStore'
 import { useLocation, useNavigate } from 'react-router-dom'
 import React from 'react'
 
-import frameImage from "assets/frame.svg"
+import frameImage from 'assets/frame.svg'
 
 export const RecipesContext = createContext(new RecipesStore())
 const Provider = RecipesContext.Provider
 
 const RecipesPage = () => {
     const recipesStore = useLocalStore(() => new RecipesStore())
+    const numberOfPages=9;
     const queryStore = rootStore.query
     const location = useLocation()
     const navigate = useNavigate()
@@ -30,7 +31,6 @@ const RecipesPage = () => {
     const currentQueryString =
         currentQuery !== undefined ? currentQuery.toString() : ''
     const currentType = queryStore.getParam('type')
-    console.log(queryStore.getParam('type'))
     const searchParams = new URLSearchParams(location.search)
     const currentTypeString =
         currentType !== undefined ? currentType.toString() : ''
@@ -83,15 +83,14 @@ const RecipesPage = () => {
             addRecipeNutrition: true,
             query: currentQueryString,
             type: currentTypeString,
+            number: 9,
+            offset: (page - 1) * numberOfPages,
         })
-    }, [recipesStore, currentTypeString])
+    }, [recipesStore, currentTypeString, page])
     return (
         <Provider value={recipesStore}>
             <div className="recipes-page">
-                <img
-                    className={styles.image_recipes}
-                    src={frameImage}
-                />
+                <img className={styles.image_recipes} src={frameImage} />
                 <div className={styles.recipes}>
                     <Text view="p-20" color="primary">
                         Find the perfect food and{' '}
@@ -133,18 +132,11 @@ const RecipesPage = () => {
                             <Loader size="l" />
                         ) : (
                             <>
-                                <RecipesList
-                                    list={recipesStore.list.slice(
-                                        (page - 1) * 9,
-                                        page * 9
-                                    )}
-                                />
+                                <RecipesList list={recipesStore.list} />
 
                                 <Pagination
                                     page={page}
-                                    totalPages={Math.ceil(
-                                        recipesStore.list.length / 9
-                                    )}
+                                    totalPages={recipesStore.totalResults/numberOfPages}
                                     handlePagination={handlePages}
                                 />
                             </>

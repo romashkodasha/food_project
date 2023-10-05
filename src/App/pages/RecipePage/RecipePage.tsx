@@ -45,7 +45,7 @@ const RecipePage = () => {
           </section>
           <div className={styles.recipe}>
             <section className={styles.withImage}>
-              <img src={recipeItemStore.recipe.image} />
+              <img src={recipeItemStore.recipe.image} className={styles.image}/>
               <div className={styles.info}>
                 <div className={styles.info_group}>
                   <div className={styles.info_group_div}>
@@ -118,7 +118,7 @@ const RecipePage = () => {
                 <div className={styles.vertical_line} />
                 <div className={styles.dot} />
               </div>
-              <div>
+              <div className={styles.eq_container}>
                 <Text view="p-20" weight="medium">
                   Equipment
                 </Text>

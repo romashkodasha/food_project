@@ -25,6 +25,7 @@ export type RecipeApi = {
     cookingMinutes: number
     readyInMinutes: number
     aggregateLikes: number
+    healthScore?: number
     servings: number
     summary: string
     extendedIngredients: { original: string }[]

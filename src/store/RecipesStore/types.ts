@@ -4,5 +4,6 @@ export type GetRecipesListParams = {
     number?: number;
     query?: string;
     type?: string;
+    offset?: number;
 }
 
