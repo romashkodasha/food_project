@@ -10,7 +10,6 @@ header {
     padding-left: 7vw;
     padding-right: 7vw;
     justify-content: space-between;
-    
 }
 .nav{
     display: flex;
@@ -39,6 +38,7 @@ header {
 .logo_heart{
     width: 17px;
     height: 17px;
+    cursor: pointer;
 }
 
 .logo_auth{

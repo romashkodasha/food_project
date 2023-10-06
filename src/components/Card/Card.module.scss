@@ -9,9 +9,9 @@
   border-radius: 10px 10px 0px 0px;
 }
 .card_image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
+  width: 360px;
+  height: 360px;
+  object-fit: fill; 
   position: absolute;
   top: 0;
   left: 0;
@@ -22,11 +22,15 @@
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 360px;
-  width: 100%;
+  width: 360px;
   background: $card-bg;
   border-radius: 10px;
-  
+  cursor: pointer;
+  @media (max-width: 500) {
+    .card {
+      width: 100%; /* Сужаем карточку на 100% ширины при экранах шириной менее 360px */
+    }
+  }
 }
 
 .card:hover {

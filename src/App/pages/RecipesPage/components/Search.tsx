@@ -52,7 +52,7 @@ const Search: React.FC<SearchProps>  = ({searchParams}) => {
                 placeholder="Enter dishes"
             />
             <Button onClick={handleSearch}>
-                <img src={searchButton} />
+                <img src={searchButton} className={styles.search_button}/>
             </Button>
         </div>
     )

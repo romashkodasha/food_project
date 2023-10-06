@@ -78,10 +78,15 @@
 
 .media_img {
     border-radius: $border-radius;
-    width:250px
+    max-width: 250px; 
+   height: auto;
 }
 
 .media-item {
     margin-left: 2vh;
     margin-right: 2vh;
 }
+
+.sliderDots {
+    margin-top: 10px; /* Настройте нужный вам отступ между точками и контентом */
+ }

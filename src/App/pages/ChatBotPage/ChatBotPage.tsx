@@ -10,6 +10,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import Text from 'components/Text'
+import {isMobile} from 'react-device-detect';
 
 const ChatBot = () => {
     const chatBotStore = useLocalStore(() => new ChatBotStore())
@@ -59,6 +60,7 @@ const ChatBot = () => {
                                 <Slider
                                     {...mediaSettings}
                                     className={styles.slider}
+                                    dots={!isMobile}   
                                 >
                                     {message.media.map((item) => (
                                         <div

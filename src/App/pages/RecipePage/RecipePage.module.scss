@@ -3,7 +3,6 @@
 .recipe_page {
     padding: 49px 7vw;
     position: relative;
-    height: 100vh;
 }
 .title {
     display: flex;
@@ -16,6 +15,7 @@
         border: none;
         width: 36px;
         height: 36px;
+        cursor: pointer;
     }
 }
 
