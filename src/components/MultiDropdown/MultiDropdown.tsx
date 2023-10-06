@@ -126,7 +126,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
                         opacity: multiDropdownStore.isDropdownOpen ? 1 : 0,
                     }}
                     exit={{ height: 0, opacity: 0 }} // Анимация при закрытии
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.7 }}
                 >
                     {multiDropdownStore.isDropdownOpen &&
                         !disabled &&
